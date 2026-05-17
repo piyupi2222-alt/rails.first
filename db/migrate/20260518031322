@@ -1,0 +1,11 @@
+class AddColumnSchedules < ActiveRecord::Migration[7.2]
+  def up
+    add_column :schedules, :place, :string
+  end
+  def down
+    remove_column :schedules, :place, :string
+  end
+  
+  def change
+  end
+end
