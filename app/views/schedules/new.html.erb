@@ -1,0 +1,41 @@
+<html lang="ja">
+<div class = "Container">
+    <p><%= @new %></p>
+    <section class = "FormWrapper">
+        <h2 class = "PageTitle_text">予定の新規追加</h2>
+        
+        <div class ="FormContainer">
+            <%= form_with model: @schedule do |f| %>
+                <%= render "shared/error", obj: @schedule %> 
+                <div class = "FormBlock1">
+                    <div><%= f.label :title ,"タイトル" %></div>
+                    <div><%= f.text_field :title, :placeholder => "タイトル" ,class:"titleform"%></div>
+                    </div>
+                <div class = "FormData">
+                    <div class = "FormDataA">
+                        <div><%= f.label :startday ,"開始日" %></div>
+                        <div><%= f.date_field :startday ,class:"dayform"%></div>
+                    </div>
+                    <div class = "FormDataA">
+                        <div><%= f.label :finishday ,"終了日" %></div>
+                        <div><%= f.date_field :finishday ,class:"dayform"%></div>
+                    </div>
+                </div>
+                <div class = "FormCheckbox">
+                    <%= f.check_box :allday %>
+                    <%= f.label :終日の場合はチェックを入れます %>
+                </div>
+                <div class = "FormBlock1">
+                    <div><%= f.label :schedule_memo ,"スケジュールメモ" %></div>
+                    <div><%= f.text_field :schedule_memo, :placeholder => "メモを記入する" ,class:"formmemo"%></div>
+                </div>
+                <div>
+                    <div class = "addfooter">
+                        <button class = "btncancel"><%= link_to "キャンセル", :schedules ,class:"cancel"%></button>
+                        <div class = "btnsave"><%= f.submit "登録" ,class:"saveschedule"%></div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </section>
+</div>
