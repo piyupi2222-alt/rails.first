@@ -1,50 +1,56 @@
 class SchedulesController < ApplicationController
-    def index
-      @schedules = Schedule.all
-    end
-   
-    def create
-      @schedule = Schedule.new(params.require(:schedule).permit(:title, :startday, :finishday, :allday, :updateday, :schedule_memo))
-      if @schedule.save
-        flash[:notice] = "予定を追加しました"
-        redirect_to :schedules
-      else
-        render "new"
-      end
-    end
+def home
+ @tasks = Task.all
+end
 
-    def show
-      @schedule = get_params
-    end
-  
-    def new
-      @schedule = Schedule.new
-    end
-  
-    def edit
-      @schedule = get_params
-    end
-  
-    def update
-      @schedule = get_params
-      if @schedule.update(params.require(:schedule).permit(:title, :startday, :finishday, :allday, :updateday, :schedule_memo))
-        flash[:notice] = "スケジュールを更新しました"
-        redirect_to :schedules
-      else
-        render "edit"
-      end
-    end
 
-    def destroy
-      @schedule = get_params
-      @schedule.destroy
-      flash[:notice] = "予定を削除しました"
-      redirect_to :schedules
-    end
+# 詳細
+def show
+    @task = Task.find(params[:id])
+end
 
-    private
-      def get_params
-        Schedule.find(params[:id])
-      end
+
+# 新規
+def new
+    @task = Task.new
+end
+def create
+      @task = Task.new(schedule_params)
+  if @task.save
+    redirect_to root_path, notice: "スケジュールを登録しました"
+  else
+    flash.now[:alert] = "登録に失敗しました"
+    render :new, status: :unprocessable_entity
   end
-  
+end
+
+# 編集
+def edit
+  @task = Task.find(params[:id])
+end
+
+# 削除
+def destroy
+  @task = Task.find(params[:id]) # 削除したいデータを見つける
+  @task.destroy                 # データを削除する
+  redirect_to root_path, notice: "スケジュールを削除しました", status: :see_other
+end
+
+
+# 更新
+def update
+  @task = Task.find(params[:id])
+  if @task.update(schedule_params)
+    redirect_to root_path, notice: "スケジュールを更新しました"
+  else
+      flash.now[:alert] = "更新に失敗しました"
+      render :edit, status: :unprocessable_entity
+  end
+end
+private
+  def schedule_params
+    # :task はモデル名（Task）を小文字にしたもの
+    # .permit() の中には、保存したいカラム名（title, content等）をすべて書く
+    params.require(:task).permit(:title, :content, :start_date, :end_date, :all_day)
+  end
+end
