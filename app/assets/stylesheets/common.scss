@@ -1,0 +1,235 @@
+header {
+    width: 100%;
+    padding: 1px;
+    background-color: rgb(28, 95, 146);
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+    margin-bottom: 15px;
+}
+body {
+    background-color: rgb(236, 233, 233)
+}
+.container {
+    max-width: 980px;
+    margin: 0 auto; 
+}
+.PageTitle {
+    display: flex;
+    justify-content: space-between;
+}
+.PageTitle_text {
+    width: 100%;
+}
+.PageTitle_addschedule {
+    width: 130px;
+    background-color: #3d62c9;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    height: 45px;
+    line-height: 18px;
+    border-radius: 3px;
+}
+.linknew {
+    text-decoration: none;
+    color: #fff;
+}
+table {
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    border-collapse: collapse ;
+    width: 100%;
+    border-left: 1px solid rgb(179, 178, 178);
+    border-right: 1px solid rgb(179, 178, 178);
+    border-radius: 5px;
+}
+table th,table td{
+    border-top: 1px solid rgb(179, 178, 178);
+    border-bottom: 1px solid rgb(179, 178, 178); 
+}
+table th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    padding: 5px;
+}
+table td {
+    padding: 15px 10px;
+    text-decoration: none;
+}
+.notice {
+    background-color: #ccf;
+    padding: 5px;
+}
+.linkb {
+    text-decoration: none;
+    color: blue;
+}
+
+.PageFooter{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    border: 1px solid rgb(179, 178, 178);
+    border-radius: 5px;
+    padding: 15px;
+}
+.showcontainer {
+    max-width: 500px;
+    margin: 0 auto; 
+}
+.ShowPage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+}
+.subtitle {
+    
+}
+.ShowPageButton {
+    width: 100px;
+    border-radius: 10vh;
+    position: relative;
+}
+.editbutton {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;    
+}
+ul {
+    list-style: none;
+}
+.ReturnIndex {
+    position: relative;
+    padding-left: 15px;
+}
+.ReturnIndex:before {
+    content: "";
+    position: absolute;
+    top: .50em;
+    left: 0;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(225deg);
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #3d62c9 ;
+    border-right: 2px solid #3d62c9;
+}
+.ReturnIndex:after {
+    content: "";
+    position: absolute;
+    top: .70em;
+    left: 1px;
+    width: 10px;
+    height: 2px;
+    background-color: #3d62c9;
+}
+.backindex {
+text-decoration: none;
+color: #3d62c9;
+}
+
+//新規、編集ページのCSS
+
+.Container {
+    max-width: 980px;
+}
+.FormWrapper {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    margin: auto;
+}
+.FormContainer {
+    max-width: 640px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+
+}
+.FormBlock1 {
+    display: block;
+
+}
+.titleform {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 15px;
+    border: solid 1px rgb(215, 212, 212);
+    border-radius: 3px;
+    padding-left: 12px;
+    box-sizing: border-box;
+}
+.FormData {
+    max-width: 640px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.FormDataA {
+    display: flex;
+    flex-direction: column;
+    
+}
+.dayform {
+    width: 310px;
+    height: 45px;
+    box-sizing: border-box;
+    border: solid 1px rgb(215, 212, 212);
+    border-radius: 3px;
+    padding-left: 12px;
+}
+ul {
+    padding-left: 0;
+    margin-top: 5px;
+}
+.errormsg {
+    font-size: 10px;
+    color: red;
+}
+.FormCheckbox {
+    margin: 5px auto 15px;
+}
+.formmemo {
+    width: 100%;
+    min-height: 90px;
+    border: solid 1px rgb(215, 212, 212);
+    border-radius: 3px;
+    padding-left: 12px;
+    box-sizing: border-box;
+}
+.addfooter {
+    display: flex;
+    justify-content: end;
+    margin-top: 15px;
+}
+.cancel {
+    text-decoration: none;
+    color: gray;
+}
+.btncancel {
+    border: solid 1px rgb(215, 212, 212);
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 10px 15px;
+ 
+}
+.saveschedule {
+    color: #fff;
+    background-color: #3d62c9;
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+.btnsave {
+    margin-left: 10px;
+    
+}
