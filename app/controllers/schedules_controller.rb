@@ -1,56 +1,52 @@
 class SchedulesController < ApplicationController
-def home
- @tasks = Task.all
-end
-
-
-# 詳細
-def show
-    @task = Task.find(params[:id])
-end
-
-
-# 新規
-def new
-    @task = Task.new
-end
-def create
-      @task = Task.new(schedule_params)
-  if @task.save
-    redirect_to root_path, notice: "スケジュールを登録しました"
-  else
-    flash.now[:alert] = "登録に失敗しました"
-    render :new, status: :unprocessable_entity
+  def index
+    @schedules = Schedule.all
   end
-end
 
-# 編集
-def edit
-  @task = Task.find(params[:id])
-end
-
-# 削除
-def destroy
-  @task = Task.find(params[:id]) # 削除したいデータを見つける
-  @task.destroy                 # データを削除する
-  redirect_to root_path, notice: "スケジュールを削除しました", status: :see_other
-end
-
-
-# 更新
-def update
-  @task = Task.find(params[:id])
-  if @task.update(schedule_params)
-    redirect_to root_path, notice: "スケジュールを更新しました"
-  else
-      flash.now[:alert] = "更新に失敗しました"
-      render :edit, status: :unprocessable_entity
+  def new
+    @schedule = Schedule.new
   end
-end
-private
-  def schedule_params
-    # :task はモデル名（Task）を小文字にしたもの
-    # .permit() の中には、保存したいカラム名（title, content等）をすべて書く
-    params.require(:task).permit(:title, :content, :start_date, :end_date, :all_day)
+
+  def create
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+      flash[:notice] = "スケジュールを新規登録しました"
+      redirect_to :schedules
+    else
+      flash[:alert] = "スケジュールの情報を登録できませんでした"
+      render "new"
+    end
   end
+
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def edit
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      flash[:notice] = "スケジュールIDが「#{@schedule.id}」の情報を更新しました"
+      redirect_to :root
+    else
+      flash[:alert] = "スケジュールIDが「#{@schedule.id}」の情報を更新できませんでした"
+      render "edit"
+    end
+  end
+
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    flash[:notice] = "スケジュールを削除しました"
+    redirect_to :root
+  end
+
+  private
+
+    def schedule_params
+      params.require(:schedule).permit(:title, :start_date, :end_date, :all_day, :schedule_memo)
+    end
 end
