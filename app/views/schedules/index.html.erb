@@ -1,0 +1,53 @@
+<html lang="ja">
+<body>
+    <div class = "container">
+        <div class = "PageTitle">
+            <h2 class = "PageTitle_text">予定一覧</h2>
+            <button class = "PageTitle_addschedule"><%= link_to "新規登録", :new_schedule ,class:"linknew"%></button>
+        </div>
+        <% if flash[:notice]%>
+            <p class="notice"><%= flash[:notice]%></p>
+        <% end %>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>タイトル</th>
+                    <th>開始日</th>
+                    <th>終了日</th>
+                    <th>終日</th>
+                    <th>更新日時</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @schedules.each do |schedule| %>
+                    <tr>
+                        <td><%= schedule.id %></td>
+                        <td><%= schedule.title %></td>
+                        <td><%= schedule.startday.strftime('%Y/%m/%d') %></td>
+                        <td><%= schedule.finishday.strftime('%Y/%m/%d') %></td>
+                        <td>
+                            <% if schedule.allday == "1" %>
+                                ○
+                            <% end %>
+                        </td>
+
+                        <td><%= schedule.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+                        <td><%= link_to "詳細", schedule ,class:"linkb"%></td>
+                        <td><%= link_to "編集", [:edit, schedule] ,class:"linkb"%></td>
+                        <td><%= link_to "削除", schedule, method: :delete, data: {confirm: "「#{schedule.title}」を削除してよろしいですか？"},class:"linkb"%></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <footer class = "PageFooter">
+            <div class = "ScheduleSum">予定合計 <%= @schedules.count %>件</div>
+            <div class = "DayToday">今日の日付:<%= Date.current.strftime('%Y/%m/%d')%></div>
+        </footer>
+    </div>
+</body>

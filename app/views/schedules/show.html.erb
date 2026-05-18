@@ -1,0 +1,35 @@
+<div>
+    <ul>
+        <li class ="ReturnIndex"><%= link_to "一覧に戻る", :schedules, class:"backindex"%></li>
+    </ul>
+</div>
+
+<div class = "showcontainer">
+    <div class = "ShowPage">
+        <h2 class = "subtitle"><%= @schedule.title %></h2>
+        <button class = "ShowPageButton"><%= link_to "編集",edit_schedule_path,class:"editbutton" %></button>
+    </div>
+
+    <table >
+        <tr>
+            <th><%= label :startday ,"開始日" %></th>
+            <td><%= @schedule.startday.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+            <th><%= label :finishday ,"終了日" %></th>
+            <td><%= @schedule.finishday.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+            <th><%= label :allday ,"終日" %></th>
+            <td>
+                <% if @schedule.allday == "1" %>
+                    ○
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <th><%= label :schedule_memo ,"スケジュールメモ" %></th>
+            <td><%= @schedule.schedule_memo %></td>
+        </tr>
+    </table>
+</div>
