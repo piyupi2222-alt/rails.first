@@ -17,11 +17,11 @@
     <%= javascript_importmap_tags %>
   </head>
  <header>
-  <p>スケジュール管理アプリ</p>
- </header>
+
   <body>
 
- 
+ <h1>現在の日付：<%= Date.current.strftime("%Y年%m月%d日") %></h1>
+    <%= yield %>
 
 
     <%= yield %>
